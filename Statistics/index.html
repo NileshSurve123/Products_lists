@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <title>Advanto</title>
+</head>
+<body> 
+    <h2>Transaction Statistics</h2>
+
+    <select id="monthFilter" onchange="filterTable()">
+        <option value="">Select Months</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+    
+    <table id="dataTable">
+        <thead>
+           <tr>
+            <th>Months</th>
+
+            <th>Total Sale Amount</th>
+
+            <th>Total sold item</th>
+
+            <th id="not">Total not sold item</th>
+
+           </tr>
+        </thead>
+        <tbody id="data-output">
+          <tr>  
+            <td width="50px">January</td>
+            <td>Rs.5284</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+
+        <tr>  
+            <td>February</td>
+            <td>Rs.179.7</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+
+        <tr>  
+            <td>March</td>
+            <td>Rs.798</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+
+        <tr>  
+            <td>April</td>
+            <td>Rs.167.84</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>  
+            <td>May</td>
+            <td>Rs.1250.55</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>  
+            <td>June</td>
+            <td>Rs.7699.3</td>
+            <td>4</td>
+            <td>6</td>
+        </tr>
+        <tr>  
+            <td>July</td>
+            <td>Rs.1319.89</td>
+            <td>2</td>
+            <td>4</td>
+        </tr>
+        <tr>  
+            <td>August</td>
+            <td>Rs.899.88</td>
+            <td>2</td>
+            <td>0</td>
+        </tr>
+        <tr>  
+            <td>September</td>
+            <td>Rs.1920.97</td>
+            <td>4</td>
+            <td>3</td>
+        </tr>
+        <tr>  
+            <td>October</td>
+            <td>Rs.1447.98</td>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+        <tr>  
+            <td>November</td>
+            <td>Rs.29.549</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>  
+            <td>December</td>
+            <td>Rs.529</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+  </tbody>
+    </table>
+    <script src="script.js">
+
+        
+    </script>
+</body>
+</html>

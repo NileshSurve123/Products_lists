@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanto</title>
+    <style>
+        h2{
+            margin-left: 700px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bar Chart Stats</h2>
+    <h3>Select Month:</h3>
+    <select id="monthSelect" onchange="filterData()">
+        <option value="all">All</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+
+    <h3>Select Price Range:</h3>
+    <select id="priceRange" onchange="filterData()">
+        <option value="all">All</option>
+        <option value="low">0 - 50</option>
+        <option value="medium">51 - 100</option>
+        <option value="high">101 - 200</option>
+    </select>
+
+    <canvas id="myBarChart" width="400" height="120"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+        const chartData = [
+            { label: "January", price: 30, month: "January" },
+            { label: "February", price: 70, month: "February" },
+            { label: "March", price: 120, month: "March" },
+            { label: "April", price: 180, month: "April" },
+            { label: "May", price: 95, month: "May" },
+            { label: "June", price: 45, month: "June" },
+            { label: "July", price: 85, month: "July" },
+            { label: "August", price: 150, month: "August" },
+            { label: "September", price: 45, month: "September" },
+            { label: "October", price: 120, month: "October" },
+            { label: "November", price: 70, month: "November" },
+            { label: "December", price: 180, month: "December" },
+        ];
+
+
+        const ctx = document.getElementById('myBarChart').getContext('2d');
+        let barChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.map(item => item.label),
+                datasets: [{
+                    label: 'Price',
+                    data: chartData.map(item => item.price),
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        function filterData() {
+            const selectedMonth = document.getElementById('monthSelect').value;
+            const selectedPriceRange = document.getElementById('priceRange').value;
+            
+            let filteredData = chartData;
+
+        
+            if (selectedMonth !== 'all') {
+                filteredData = filteredData.filter(item => item.month === selectedMonth);
+            }
+
+        
+            if (selectedPriceRange === 'low') {
+                filteredData = filteredData.filter(item => item.price >= 0 && item.price <= 50);
+            } else if (selectedPriceRange === 'medium') {
+                filteredData = filteredData.filter(item => item.price > 50 && item.price <= 100);
+            } else if (selectedPriceRange === 'high') {
+                filteredData = filteredData.filter(item => item.price > 100 && item.price <= 200);
+            }
+
+    
+            barChart.data.labels = filteredData.map(item => item.label);
+            barChart.data.datasets[0].data = filteredData.map(item => item.price);
+            barChart.update();
+        }
+    </script>
+</body>
+</html>
